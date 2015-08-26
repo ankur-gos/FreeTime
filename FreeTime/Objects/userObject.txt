@@ -1,0 +1,9 @@
+User Object
+
+{
+	_id: 00000000,
+	firstName: String,
+	lastName: String,
+	emailAdress: String,
+	password: String
+}
