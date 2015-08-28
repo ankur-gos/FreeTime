@@ -1,0 +1,104 @@
+@import url(https://fonts.googleapis.com/css?family=Comfortaa);
+
+	#bottom {
+		position: fixed;
+		left: 0;
+		right: 0;
+		height: 70%;
+		text-align: center;  
+		vertical-align: middle ;
+		font-family: Comfortaa;
+	}
+	
+	#bottom {
+		bottom: 0;
+		background-color: rgb(162, 205, 57);
+	}
+
+	
+	h1 span { 
+	   position: absolute;    
+	   top: 40px;    
+	   left: 0;    
+	   width: 100%;
+	   color: white;
+	   font-family: Comfortaa;		
+	   font-style: normal;		
+	   font-weight: 100;
+	   font-size: 50px
+	}
+    
+    h2 span {
+	    position: absolute;
+	    top: 160px;
+	    left: 0;
+	    width: 100%;
+	    color: white;
+	    font-family: Comfortaa;
+	    font-style: normal;
+	    font-weight: lighter;
+	    font-size: 25px;
+	}
+    
+    h3 span {
+	    position: absolute;
+	    top: 300px;
+	    left: 0;
+	    width: 100%;
+	    color: white;
+	    font-family: Comfortaa;
+	    font-style: normal;
+	    font-weight: 100;
+	    font-size: 34px
+	}
+   
+   .signup-box, .close-icon, .signup {
+	   position: absolute;
+	   left: 390px;
+	   padding: 3px;
+	   width: 340px;
+	   height: 30px;
+	   margin: 0 auto;
+	   margin-top: 360px;
+	   border-radius: 5px;
+	   background: white;
+	   border: 2px;
+	   font-size: 27px;
+	}
+   
+   .myButton {	
+	   position: absolute;
+	   margin-top: 360px;
+	   right: 300px;
+	   height: 5px;
+	   background-color: #57682E;	
+	   -moz-border-radius: 28px;	
+	   -webkit-border-radius: 28px;	
+	   border-radius: 28px;	
+	   border: 1px solid #18ab29;	
+	   display: inline-block;	
+	   cursor: pointer;	
+	   color: #ffffff;	
+	   font-family: Comfortaa;	
+	   font-size: 17px;	
+	   padding: 16px 31px;
+	   text-align: center;
+	   line-height: 10px;	
+	   text-decoration: none;	
+	   text-shadow:0px 1px 0px #2f6627;
+	}
+   
+   .myButton:hover {	
+	   background-color:#5cbf2a;
+	}
+   
+   .myButton:active {	
+	   position:absolute;	
+	}
+			 
+		 
+		 
+		 
+		 
+		 
+		  
