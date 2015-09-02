@@ -1,16 +1,10 @@
 @import url(https://fonts.googleapis.com/css?family=Comfortaa);
-	
-	#top {
-		overflow: hidden;
-		position: fixed;
-		right: 34%;
-	}
 
 	#bottom {
 		position: fixed;
 		left: 0;
 		right: 0;
-		height: 73%;
+		height: 70%;
 		text-align: center;  
 		vertical-align: middle ;
 		font-family: Comfortaa;
@@ -19,13 +13,6 @@
 	#bottom {
 		bottom: 0;
 		background-color: rgb(162, 205, 57);
-	}
-
-	#wrapper {
-		margin-left: auto;
-		margin-right: auto;
-		width: 1000px;
-		overflow: hidden;
 	}
 
 	
@@ -38,62 +25,63 @@
 	   font-family: Comfortaa;		
 	   font-style: normal;		
 	   font-weight: 100;
-	   font-size: 60px
+	   font-size: 50px
 	}
     
     h2 span {
 	    position: absolute;
-	    top: 180px;
+	    top: 160px;
 	    left: 0;
 	    width: 100%;
 	    color: white;
 	    font-family: Comfortaa;
 	    font-style: normal;
 	    font-weight: lighter;
-	    font-size: 35px;
+	    font-size: 25px;
 	}
     
     h3 span {
 	    position: absolute;
-	    top: 360px;
+	    top: 300px;
 	    left: 0;
 	    width: 100%;
 	    color: white;
 	    font-family: Comfortaa;
 	    font-style: normal;
 	    font-weight: 100;
-	    font-size: 44px
+	    font-size: 34px
 	}
    
    .signup-box, .close-icon, .signup {
 	   position: absolute;
-	   right: 42%;
+	   left: 390px;
 	   padding: 3px;
-	   width: 360px;
+	   width: 340px;
 	   height: 30px;
 	   margin: 0 auto;
-	   margin-top: 460px;
+	   margin-top: 360px;
 	   border-radius: 5px;
 	   background: white;
 	   border: 2px;
-	   font-size: 23px;
+	   font-size: 27px;
 	}
    
    .myButton {	
 	   position: absolute;
-	   margin-top: 460px;
-	   left: 60%;
+	   margin-top: 360px;
+	   right: 300px;
 	   height: 5px;
 	   background-color: #57682E;	
 	   -moz-border-radius: 28px;	
 	   -webkit-border-radius: 28px;	
 	   border-radius: 28px;	
+	   border: 1px solid #18ab29;	
 	   display: inline-block;	
 	   cursor: pointer;	
 	   color: #ffffff;	
 	   font-family: Comfortaa;	
 	   font-size: 17px;	
-	   padding: 16px 28px;
+	   padding: 16px 31px;
 	   text-align: center;
 	   line-height: 10px;	
 	   text-decoration: none;	
