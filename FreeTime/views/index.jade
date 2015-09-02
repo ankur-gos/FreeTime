@@ -1,11 +1,9 @@
 extends layout
-
 block content
-doctype html
-html
-  #wrapper
+  doctype html
+  html
     head
-      link(href='login.css', rel='stylesheet', type='text/css')
+      link(rel='stylesheet', href='/stylesheets/login.css', type='text/css')
     #bottom
       h1
         span What is freetime?
@@ -21,8 +19,7 @@ html
       form
         input.signup-box(type='text', name='signup', required='', placeholder='Your email or phone number')
       a.myButton(href='#') Sign Up!
-    #top
-      p(align='center')
-        img(src='http://i.imgur.com/HMklqT3.png', width='475', height='157.49')
-  html
+    p(align='center')
+      img(src='http://i.imgur.com/HMklqT3.png', width='475', height='157.49')
+
 
