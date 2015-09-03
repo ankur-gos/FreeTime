@@ -5,9 +5,10 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-var routes = require('./routes/index');
+var home = require('./routes/index');
 var users = require('./routes/users');
-var time = require('./routes/Time')
+var time = require('./routes/Time');
+var hashCreator = require('./models/HashCreator');
 
 var app = express();
 // use monk?
@@ -23,11 +24,30 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', routes);
+app.use('/', home);
 app.use('/users', users);
-app.use('/time', function(){
-  console.log(time.currentTime)
+
+// GET request for a hashkey given an email
+// requirements: 
+// body: email: string
+
+// returns:
+// string
+app.get('/hashKey', function(req, res){
+  if(req.headers.email != undefined){
+    var name = req.headers.email;
+    var key = hashCreator.getHashKey(name, function (key){
+      console.log(key);
+      res.send(key);
+    });
+  } else{
+    res.send('error');
+  }
 })
+
+app.get('/bits', function(req, res) {
+    res.send([{name:'bit1'}, {name:'bit2'}]);
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -64,7 +84,7 @@ var server = app.listen(3000, function (){
   var host = server.address().address;
   var port = server.address().port;
 
-  console.log('Example app listening at http://%s:%s', host, port);
+  console.log('app listening at http://%s:%s', host, port);
 
 })
 
