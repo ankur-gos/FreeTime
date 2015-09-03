@@ -10,7 +10,7 @@ var db = require('monk')('localhost/freetime');
 var home = require('./routes/index');
 var users = require('./routes/users');
 var time = require('./routes/Time');
-var InsertUser = require('./models/InsertUser');
+var InsertUser = require('./models/InsertUsers');
 var Error = require('./models/Error');
 
 var app = express();
