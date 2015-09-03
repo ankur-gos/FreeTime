@@ -33,7 +33,7 @@ app.use('/users', users);
 
 // returns:
 // string
-app.get('/hashKey', function(req, res){
+app.get('/api/hashKey', function(req, res){
   if(req.headers.email != undefined){
     var name = req.headers.email;
     var key = hashCreator.getHashKey(name, function (key){
