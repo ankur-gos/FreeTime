@@ -4,11 +4,14 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var db = require('monk')('localhost/freetime');
+
 
 var home = require('./routes/index');
 var users = require('./routes/users');
 var time = require('./routes/Time');
-var hashCreator = require('./models/HashCreator');
+var InsertUser = require('./models/InsertUser');
+var Error = require('./models/Error');
 
 var app = express();
 // use monk?
@@ -45,9 +48,30 @@ app.get('/api/hashKey', function(req, res){
   }
 })
 
-app.get('/bits', function(req, res) {
-    res.send([{name:'bit1'}, {name:'bit2'}]);
-});
+app.post('/api/signup/', function(req, res, next){
+  var email = req.body.email;
+  if(email != undefined){
+    if (typeof email === 'string' || email instanceof String){
+      InsertUser.insertUser(email, function(err, doc){
+        if(err){
+          //handle error
+          console.log(err)
+          res.send(err)
+        }
+        else{
+          res.send(doc);
+        }
+      })
+    }
+    else{
+      console.log(Error.badRequestError());
+      res.send()
+    }
+  } else{ // bad request
+    console.log(Error.badRequestError());
+    res.send()
+  }
+})
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -80,9 +104,11 @@ app.use(function(err, req, res, next) {
   });
 });
 
-var server = app.listen(3000, function (){
+var server = app.listen(3000, function(){
   var host = server.address().address;
   var port = server.address().port;
+  var users = db.get('users');
+  users.index('email');
 
   console.log('app listening at http://%s:%s', host, port);
 
