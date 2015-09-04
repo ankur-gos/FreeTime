@@ -52,6 +52,7 @@ app.post('/api/signup/', function(req, res, next){
   var email = req.body.email;
   if(email != undefined){
     if (typeof email === 'string' || email instanceof String){
+      console.log("foo");
       InsertUser.insertUser(email, function(err, doc){
         if(err){
           //handle error
@@ -104,7 +105,7 @@ app.use(function(err, req, res, next) {
   });
 });
 
-var server = app.listen(3000, function(){
+var server = app.listen(80, function(){
   var host = server.address().address;
   var port = server.address().port;
   var users = db.get('users');
