@@ -1,3 +1,6 @@
+// Hash Creator
+// Ankur Goswami, 8 September 2015
+
 var crypto = require('crypto');
 
 exports.getHashKey = function(input){

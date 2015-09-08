@@ -1,3 +1,6 @@
+// EmailURLCreator.js
+// Ankur Goswami, 8 September 2015
+
 var db = require('monk')('localhost/freetime');
 var users = db.get('users');
 

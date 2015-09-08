@@ -1,4 +1,4 @@
-// User Object
+// User.js
 // Ankur Goswami
 // 8/24/2015
 
