@@ -1,3 +1,6 @@
+// EmailTest.js
+// Ankur Goswami, September 8, 2015
+
 var express = require('express');
 var router = express.Router();
 var emailSender = require('../models/EmailSender')

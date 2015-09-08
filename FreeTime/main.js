@@ -7,8 +7,12 @@ var bodyParser = require('body-parser');
 var db = require('monk')('localhost/freetime');
 
 
-var home = require('./routes/index');
+// routes
+var home = require('./routes/HomeRoute');
 var users = require('./routes/users');
+var signup = require('./routes/SignUpRoute')
+
+// classes
 var InsertUser = require('./models/InsertUsers');
 var Error = require('./models/Error');
 
@@ -28,24 +32,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', home);
 app.use('/users', users);
-
-// GET request for a hashkey given an email
-// requirements: 
-// body: email: string
-
-// returns:
-// string
-app.get('/api/hashKey', function(req, res){
-  if(req.headers.email != undefined){
-    var name = req.headers.email;
-    var key = hashCreator.getHashKey(name, function (key){
-      console.log(key);
-      res.send(key);
-    });
-  } else{
-    res.send('error');
-  }
-})
+app.use('/signup/', SignUpRoute)
 
 app.post('/api/signup/', function(req, res, next){
   var email = req.body.email;
