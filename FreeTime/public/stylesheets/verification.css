@@ -1,0 +1,51 @@
+@import url(https://fonts.googleapis.com/css?family=Comfortaa);
+
+#bottom {
+	position: fixed;
+	left: 0;
+	right: 0;
+	bottom: 0%;
+}
+
+#top {
+	overflow: hidden;
+}
+
+
+h1 span {
+	position: absolute;
+	width: 100%;
+	font-family: Comfortaa;
+	text-align: center;
+	font-style: normal;
+	font-weight: 100;
+	font-size: 80px;
+	color: rgb(162, 205, 57);;
+	top: 75px;
+}
+
+h2 span{
+	position: absolute;
+	width: 100%;
+	font-family: Comfortaa;
+	text-align: center;
+	font-style: normal;
+	font-weight: 100;
+	font-size: 40px;
+	top: 250px;
+	color: rgb( 87, 104, 46);
+
+}
+
+h3 span {
+	position: absolute;
+	width: 100%;
+	font-family: Comfortaa;
+	text-align: center;
+	font-style: normal;
+	font-weight: 100;
+	font-size: 40px;
+	top: 350px;
+	color: rgb( 87, 104, 46);
+
+}
