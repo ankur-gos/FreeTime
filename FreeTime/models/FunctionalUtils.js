@@ -1,3 +1,6 @@
+// FunctionalUtils.js
+// Ankur Goswami, 8 September 2015
+
 module.exports = function(){
 	var forEach = function(array, action){
 		for(var i = 0; i < array.length; i++)
