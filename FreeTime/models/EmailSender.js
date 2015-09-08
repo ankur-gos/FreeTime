@@ -1,3 +1,6 @@
+// EmailSender.js
+// Ankur Goswami, 8 September 2015
+
 var aws = require('aws-sdk');
 
 exports.sendEmail = function(){
