@@ -29,7 +29,7 @@ router.use(':key?', function(req, res, next) {
 
 // returns:
 // string
-app.get('/api/hashKey', function(req, res){
+router.get('/api/hashKey', function(req, res){
   if(req.headers.email != undefined){
     var name = req.headers.email;
     var key = hashCreator.getHashKey(name, function (key){

@@ -32,7 +32,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', home);
 app.use('/users', users);
-app.use('/signup/', SignUpRoute)
+app.use('/signup/', signup)
 
 app.post('/api/signup/', function(req, res, next){
   var email = req.body.email;
