@@ -1,0 +1,9 @@
+doctype html
+html
+  head
+    script(data-require='angular.js@1.2.19', data-semver='1.2.19', src='https://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js')
+    link(rel='stylesheet', href='stylesheets/login.css')
+    script(src='javascripts/app.js')
+  body
+    .stock-categories(ng-app='myApp', ng-controller='HomeController')
+      button(ng-click='postEmail()') Post Email
