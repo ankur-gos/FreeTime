@@ -44,5 +44,6 @@ router.get('/api/hashKey', function(req, res){
 module.exports = router;
 
 router.post('/api/signup', function(req, res, next){
+	
 	res.send('Email sent to use')
 })
