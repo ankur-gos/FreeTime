@@ -5,5 +5,8 @@ html
     link(rel='stylesheet', href='stylesheets/login.css')
     script(src='javascripts/app.js')
   body
-    .stock-categories(ng-app='myApp', ng-controller='HomeController')
-      button(ng-click='postEmail()') Post Email
+    div(ng-app='myApp', ng-controller='HomeController')
+      form
+        input(type='email' ng-model="email")
+        br
+        button(ng-click='postEmail(email)') Signup

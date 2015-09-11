@@ -19,6 +19,7 @@ exports.insertUser = function(email, callback){
 		})
 	}
 	else{
+		console.log('yo')
 		callback(null, callback);
 	}
 }

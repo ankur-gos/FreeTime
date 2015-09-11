@@ -6,7 +6,6 @@ var aws = require('aws-sdk');
 exports.sendEmail = function(){
 	aws.config.loadFromPath('config.json');
 	var ses = new aws.SES({apiVersion: '2012-12-01'});
-	console.log('foo');
 	var to = ['agoswam3@ucsc.edu'];
 
 	var from = 'agoswam3@ucsc.edu';
@@ -28,5 +27,30 @@ exports.sendEmail = function(){
 			if (err) throw err
 			console.log('Email send\n');
 			console.log(data)
+	})
+}
+
+exports.sendEmailURL = function(email, url){
+	aws.config.loadFromPath('config.json');
+	var ses = new aws.SES({apiVersion: '2012-12-01'});
+	var to = [email];
+	var from = 'agoswam3@ucsc.edu';
+
+	ses.sendEmail({
+		Source: from,
+		Destination: { ToAddresses: to },
+		Message: {
+			Subject: {
+				Data: 'freetime Verification Email!'
+			},
+			Body: {
+				Text: {
+					Data: url
+				}
+			}
+		}
+	}, function (err, data){
+			if (err) throw err
+			console.log('Email sent\n');
 	})
 }

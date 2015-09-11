@@ -3,23 +3,27 @@ var router = express.Router();
 var db = require('monk')('localhost/freetime');
 var users = db.get('users');
 
+var InsertUsers = require('../models/InsertUsers')
+var URLCreator = require('../models/EmailURLCreator')
+var EmailSender = require('../models/EmailSender')
+
 
 // use request when user clicks link in email
 
-router.use(':key?', function(req, res, next) {
-	if(key){
-		users.update({
-			hash: key
-		},{
-			$set: {
-				verified: true
-			}
-		});
-	}
-	else{
-		next();
-	}
-});
+// router.use(':key?', function(req, res, next) {
+// 	if(key){
+// 		users.update({
+// 			hash: key
+// 		},{
+// 			$set: {
+// 				verified: true
+// 			}
+// 		});
+// 	}
+// 	else{
+// 		next();
+// 	}
+// });
 
 // GET request for a hashkey given an email
 // requirements: 
@@ -41,9 +45,44 @@ router.get('/api/hashKey', function(req, res){
   }
 })
 
-module.exports = router;
+// router.get('/:email', function(req, res, next){
+// 	var insertUserHandler = function (err, doc){
+// 		if(err){
+// 			console.log('Error at: insertUserHandler-- insertUser')
+// 		}
+// 		else{
+// 			URLCreator.createEmailURLFromDoc(doc, EmailSender.sendEmailURL)
+// 		}
+// 	}
 
-router.post('/api/signup', function(req, res, next){
-	
-	res.send('Email sent to use')
+// 	if (req.params.email){
+// 		console.log('hello')
+// 		Insert.insertUser(req.body.email, insertUserHandler)
+// 		res.send("OKKKKK")
+// 	}else{
+// 		console.log('error')
+// 		res.send('FAILED')
+// 	}
+// })
+
+router.post('/', function(req, res, next){
+
+	var insertUserHandler = function (err, doc){
+		if(err){
+			console.log('Error at: insertUserHandler-- insertUser')
+		}
+		else{
+			URLCreator.createEmailURLFromDoc(doc, EmailSender.sendEmailURL)
+		}
+	}
+
+	if (req.body.email){
+		InsertUsers.insertUser(req.body.email, insertUserHandler);
+		res.send("OKKKKK")
+	}else{
+		console.log('error')
+		res.send('FAILED')
+	}
 })
+
+module.exports = router;

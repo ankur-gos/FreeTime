@@ -5,7 +5,7 @@ var db = require('monk')('localhost/freetime');
 var users = db.get('users');
 
 exports.createEmailURL = function(email, callback){
-	var baseURL = 'http://52.25.145.199/';
+	var baseURL = 'www.myfreetime.io/';
 	baseURL = baseURL + 'signup/';
 	users.findOne({ email: email }).on('complete', function(err, doc){
 		if (err)
@@ -16,4 +16,10 @@ exports.createEmailURL = function(email, callback){
 		}
 	})
 	
+}
+
+exports.createEmailURLFromDoc = function(doc, callback){
+	var baseURL = 'www.myfreetime.io/';
+	baseURL = baseURL + 'signup/' + doc.hash;
+	callback(doc.email, baseURL);
 }
