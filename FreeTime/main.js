@@ -5,6 +5,8 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var db = require('monk')('localhost/freetime');
+var mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost/freetime');
 
 
 // routes
@@ -17,7 +19,6 @@ var InsertUser = require('./models/InsertUsers');
 var Error = require('./models/Error');
 
 var app = express();
-// use monk?
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
@@ -30,35 +31,16 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(session({
+  secret: 'forgetmenot',
+  resave: false,
+  saveUninitialized: true
+}))
+
 app.use('/', home);
 app.use('/users', users);
 app.use('/signup/', signup)
 
-app.post('/api/signup/', function(req, res, next){
-  var email = req.body.email;
-  if(email != undefined){
-    if (typeof email === 'string' || email instanceof String){
-      console.log("foo");
-      InsertUser.insertUser(email, function(err, doc){
-        if(err){
-          //handle error
-          console.log(err)
-          res.send(err)
-        }
-        else{
-          res.send(doc);
-        }
-      })
-    }
-    else{
-      console.log(Error.badRequestError());
-      res.send()
-    }
-  } else{ // bad request
-    console.log(Error.badRequestError());
-    res.send()
-  }
-})
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

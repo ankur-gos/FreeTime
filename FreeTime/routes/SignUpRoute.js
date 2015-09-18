@@ -65,8 +65,7 @@ router.get('/api/hashKey', function(req, res){
 // 	}
 // })
 
-router.post('/', function(req, res, next){
-
+router.post('/', function (req, res, next){
 	var insertUserHandler = function (err, doc){
 		if(err){
 			console.log('Error at: insertUserHandler-- insertUser')
@@ -80,7 +79,7 @@ router.post('/', function(req, res, next){
 		InsertUsers.insertUser(req.body.email, insertUserHandler);
 		res.send("OKKKKK")
 	}else{
-		console.log('error')
+		console.log('No email in body')
 		res.send('FAILED')
 	}
 })
