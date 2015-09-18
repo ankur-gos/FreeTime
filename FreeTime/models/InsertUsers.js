@@ -7,9 +7,7 @@ var hashCreator = require('./HashCreator');
 
 exports.insertUser = function(email, callback){
 	if (typeof email === 'string' || email instanceof String){
-		console.log('hit');
 		var generatedHash = hashCreator.getHashKey(email);
-		console.log('hit2');
 		users.insert({
 			'email': email,
 			'hash': generatedHash,
@@ -22,4 +20,9 @@ exports.insertUser = function(email, callback){
 		console.log('yo')
 		callback(null, callback);
 	}
+}
+
+// TODO
+var checkUserExistsInDatabase = function(email){
+	console.log('STUB');
 }

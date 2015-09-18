@@ -18,4 +18,13 @@ router.get('/feed', function(req, res){
 	res.render('Partials/Feed', {});
 });
 
+router.get('/logout', function(req, res){
+  var session = req.session;
+  session.destroy(function (err){
+    console.log('logged out');
+  })
+
+  res.redirect('/');
+});
+
 module.exports = router;

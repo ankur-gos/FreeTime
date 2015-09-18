@@ -1,12 +1,15 @@
 var express = require('express');
 var router = express.Router();
 
-var InsertUsers = require('../models/InsertUsers')
-var URLCreator = require('../models/EmailURLCreator')
-var EmailSender = require('../models/EmailSender')
+var login = require('../models/LoginUser')
 
 router.post('/', function (req, res, next){
   if(req.body.login){
-    
+    login.sendLoginEmail(req.body.login, function (){
+      res.send('Done')
+    })
+  }
+  else{
+    res.send('No login name')
   }
 })

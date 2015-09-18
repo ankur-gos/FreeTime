@@ -8,22 +8,25 @@ var URLCreator = require('../models/EmailURLCreator')
 var EmailSender = require('../models/EmailSender')
 
 
-// use request when user clicks link in email
+use request when user clicks link in email
 
-// router.use(':key?', function(req, res, next) {
-// 	if(key){
-// 		users.update({
-// 			hash: key
-// 		},{
-// 			$set: {
-// 				verified: true
-// 			}
-// 		});
-// 	}
-// 	else{
-// 		next();
-// 	}
-// });
+router.use('/:key?', function(req, res, next) {
+	if(req.params.key){
+    var session = req.session;
+    session.token = hash;
+
+		users.update({
+			hash: key
+		},{
+			$set: {
+				verified: true
+			}
+		});
+	}
+	else{
+		next();
+	}
+});
 
 // GET request for a hashkey given an email
 // requirements: 

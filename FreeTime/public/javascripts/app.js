@@ -28,13 +28,23 @@ function HomeController($scope, $http){
 }
 
 function InputController($scope, $http){
+  
 	$scope.printTime = function(time){
 		alert(JSON.stringify(time));
 	}
 
 	$scope.postTime = function(time){
-		$http.post('/')
+		//$http.post('/')
 	}
+
+  $scope.logout = function(){
+    $http.get('/logout').
+      then(function (response){
+        alert(response);
+      }, function (response){
+        alert(response);
+      });
+  }
 }
 
 function printObject(object){
