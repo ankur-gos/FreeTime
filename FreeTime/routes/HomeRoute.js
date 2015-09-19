@@ -6,6 +6,7 @@ router.get('/', function(req, res, next) {
 	var sess = req.session;
 
 	if(req.session.token){
+		console.log('PING')
 		res.redirect('/feed')
 	}
 	else{
@@ -22,9 +23,8 @@ router.get('/logout', function(req, res){
   var session = req.session;
   session.destroy(function (err){
     console.log('logged out');
+	res.send('success')
   })
-
-  res.redirect('/');
 });
 
 module.exports = router;

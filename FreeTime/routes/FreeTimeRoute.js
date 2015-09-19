@@ -9,8 +9,8 @@ var router = express.Router();
 
 // returns:
 // freetime object id
-router.post('/:hash/', function(req, res){
-	res.send('STUB')
+router.post('/', function(req, res){
+	var session = req.session
 })
 
 // GET Coinciding times

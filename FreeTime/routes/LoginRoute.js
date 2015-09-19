@@ -13,3 +13,5 @@ router.post('/', function (req, res, next){
     res.send('No login name')
   }
 })
+
+module.exports = router;

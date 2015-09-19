@@ -8,20 +8,21 @@ var URLCreator = require('../models/EmailURLCreator')
 var EmailSender = require('../models/EmailSender')
 
 
-use request when user clicks link in email
+//use request when user clicks link in email
 
-router.use('/:key?', function(req, res, next) {
+router.get('/:key?', function (req, res, next) {
 	if(req.params.key){
-    var session = req.session;
-    session.token = hash;
+	    var session = req.session;
+	    session.token = req.params.key;
 
 		users.update({
-			hash: key
+			hash: req.params.key
 		},{
 			$set: {
 				verified: true
 			}
 		});
+		res.redirect('/')
 	}
 	else{
 		next();

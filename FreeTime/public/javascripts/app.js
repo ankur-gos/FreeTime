@@ -11,23 +11,23 @@ function HomeController($scope, $http){
   $scope.postEmail = function(email){
     $http.post('/signup', { email: email }).
     	then(function (response){
-    		alert(response);
+    		printObject(response);
     	}, function (response){
-    		alert(response);
+    		printObject(response);
     	});
   }
 
   $scope.postLogin = function (login){
     $http.post('/login', { login: login }).
       then(function (response){
-        alert(response);
+        printObject(response);
       }, function (response){
-        alert(response);
+        printObject(response);
       });
   }
 }
 
-function InputController($scope, $http){
+function InputController($scope, $http, $window){
   
 	$scope.printTime = function(time){
 		alert(JSON.stringify(time));
@@ -40,9 +40,10 @@ function InputController($scope, $http){
   $scope.logout = function(){
     $http.get('/logout').
       then(function (response){
-        alert(response);
+        $window.location.href = '/';
+        //printObject(response);
       }, function (response){
-        alert(response);
+        //printObject(response);
       });
   }
 }
