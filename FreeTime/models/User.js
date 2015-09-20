@@ -2,17 +2,15 @@
 // Ankur Goswami
 // 8/24/2015
 
-var encryptor = require('./PasswordEncryptor.js')
+var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
+var FreeTime = require('./FreeTime')
 
-function FTUser(firstName, lastName, email, password){
-	this.firstName = firstName;
-	this.lastName = lastName;
-	this.email = email;
-	encryptor.encryptPassword(password, function (err, hash){
-		if (err)
-			console.log(err)
-		else
-			this.password = hash
-	})
-}
+var userSchema = new Schema({
+	email: String,
+	hash: Number,
+	verified: Boolean,
+	freetimes: [FreeTime.schema]
+})
 
+module.exports = mongoose.model('User', userSchema)
