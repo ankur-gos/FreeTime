@@ -34,7 +34,16 @@ function InputController($scope, $http, $window){
 	}
 
 	$scope.postTime = function(time){
-		//$http.post('/')
+		$http.post('/feed', { 
+      start: time.start,
+      end: time.end,
+      date: time.date
+    }).
+      then(function (response){
+        printObject(response);
+      }, function(response){
+        printObject(response)
+      });
 	}
 
   $scope.logout = function(){
