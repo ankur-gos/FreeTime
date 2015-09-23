@@ -4,10 +4,9 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var db = require('monk')('localhost/freetime');
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/freetime');
 var session = require('express-session')
+var db = require('./scripts/db')
 
 
 // routes
@@ -79,8 +78,8 @@ app.use(function(err, req, res, next) {
 var server = app.listen(80, function(){
   var host = server.address().address;
   var port = server.address().port;
-  var users = db.get('users');
-  users.index('email');
+  // var users = db.get('users');
+  // users.index('email');
 
   console.log('app listening at http://%s:%s', host, port);
 

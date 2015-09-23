@@ -72,6 +72,7 @@ router.get('/api/hashKey', function(req, res){
 router.post('/', function (req, res, next){
 	var insertUserHandler = function (err, doc){
 		if(err){
+			console.log(err)
 			console.log('Error at: insertUserHandler-- insertUser')
 		}
 		else{
