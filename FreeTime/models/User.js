@@ -8,7 +8,7 @@ var FreeTime = require('./FreeTime')
 
 var userSchema = new Schema({
 	email: String,
-	hash: Number,
+	hash: String,
 	verified: Boolean,
 	freetimes: [FreeTime.schema]
 })
