@@ -6,6 +6,7 @@ var app = angular.module('myApp', []);
 
 app.controller('HomeController', HomeController);
 app.controller('InputController', InputController)
+app.controller('DisplayController', DisplayController)
 
 function HomeController($scope, $http){
   $scope.postEmail = function(email){
@@ -27,8 +28,8 @@ function HomeController($scope, $http){
   }
 }
 
-function InputController($scope, $http, $window){
-  
+function InputController($scope, $http, $window, $interval){
+
 	$scope.printTime = function(time){
 		alert(JSON.stringify(time));
 	}
@@ -55,6 +56,21 @@ function InputController($scope, $http, $window){
         //printObject(response);
       });
   }
+
+  $scope.getFreeTimes = function(){
+    $http.get('/feed/times').
+      then(function (response){
+        $scope.firstTime = response.data.starts[0]
+        $scope.endTime = response.data.ends[0]
+        //alert(printObject(response))
+      }, function (response){
+        //alert('ping')
+      })
+  }
+
+  $interval(function(){ 
+    $scope.getFreeTimes();
+  }, 3000)
 }
 
 function printObject(object){

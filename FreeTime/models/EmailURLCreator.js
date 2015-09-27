@@ -19,7 +19,7 @@ exports.createEmailURL = function(email, callback){
 }
 
 exports.createEmailURLFromDoc = function(doc, callback){
-	var baseURL = 'www.myfreetime.io/';
+	var baseURL = 'localhost/';
 	baseURL = baseURL + 'signup/' + doc.hash;
 	callback(doc.email, baseURL);
 }
