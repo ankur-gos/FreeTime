@@ -60,8 +60,7 @@ function InputController($scope, $http, $window, $interval){
   $scope.getFreeTimes = function(){
     $http.get('/feed/times').
       then(function (response){
-        $scope.firstTime = response.data.starts[0]
-        $scope.endTime = response.data.ends[0]
+        $scope.times = response.data.times
         //alert(printObject(response))
       }, function (response){
         //alert('ping')

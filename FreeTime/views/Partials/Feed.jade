@@ -17,5 +17,15 @@ html
 				br
 				button(ng-click='logout()') Logout
 				br
-				|	{{firstTime}}
-				|   {{endTime}}
+				div(ng-repeat="time in times")
+					|	{{time.start}}
+					br
+					|	{{time.end}}
+				br
+				input(ng-model='friend')
+				|	{{friendError}}
+				br
+				button(ng-click='addFriend(friend)')
+				br
+				div(ng-repeat="friend in friends")
+					|	{{friend}}

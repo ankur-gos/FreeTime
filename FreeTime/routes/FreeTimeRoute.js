@@ -77,8 +77,14 @@ router.get('/times', function(req, res, next){
 
 
 				var timesObject = {
-					'starts' : createTimeArray(startTimes),
-					'ends' : createTimeArray(endTimes)
+					'times' : []
+				}
+
+				for(var i = 0; i < startTimes.length; i++){
+					timesObject.times.push({
+						'start' : startTimes[i],
+						'end' : endTimes[i]
+					});
 				}
 				res.send(timesObject)
 			}
