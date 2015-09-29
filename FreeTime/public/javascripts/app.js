@@ -57,6 +57,25 @@ function InputController($scope, $http, $window, $interval){
       });
   }
 
+  $scope.postFriend = function( friend ){
+    $http.post('/friend', {
+      friendName: friend
+    }).
+      then(function (response){
+
+      }, function (response){
+        // handle error
+      })
+  }
+
+  $scope.getFriends = function(){
+    $http.get('/friend/friends').
+      then(function (response){
+        $scope.friends = response.data.names;
+      }, function (response){
+      })
+  }
+
   $scope.getFreeTimes = function(){
     $http.get('/feed/times').
       then(function (response){
@@ -69,6 +88,7 @@ function InputController($scope, $http, $window, $interval){
 
   $interval(function(){ 
     $scope.getFreeTimes();
+    $scope.getFriends();
   }, 3000)
 }
 

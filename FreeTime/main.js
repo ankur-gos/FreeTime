@@ -15,6 +15,7 @@ var users = require('./routes/users');
 var signup = require('./routes/SignUpRoute');
 var login = require('./routes/LoginRoute');
 var freetime = require('./routes/FreeTimeRoute');
+var friends = require('./routes/FriendRoute');
 
 // classes
 var InsertUser = require('./models/InsertUsers');
@@ -44,6 +45,7 @@ app.use('/users', users);
 app.use('/signup', signup);
 app.use('/login', login);
 app.use('/feed', freetime);
+app.use('/friend', friends);
 
 
 // catch 404 and forward to error handler

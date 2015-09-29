@@ -25,7 +25,7 @@ html
 				input(ng-model='friend')
 				|	{{friendError}}
 				br
-				button(ng-click='addFriend(friend)')
+				button(ng-click='postFriend(friend)') Add Friend
 				br
 				div(ng-repeat="friend in friends")
 					|	{{friend}}
