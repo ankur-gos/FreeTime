@@ -4,7 +4,7 @@
 var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
-var User = mongoose.model('User')
+var User = mongoose.model('User');
 
 router.post('/', function(req, res){
 	var session = req.session;
