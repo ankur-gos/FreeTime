@@ -7,6 +7,7 @@ var Schema = mongoose.Schema;
 var freeTimeSchema = new Schema({
 	startTime: Date,
 	endTime: Date,
+	friends: [ ObjectId ]
 })
 
 module.exports = mongoose.model('FreeTime', freeTimeSchema);
