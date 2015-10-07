@@ -16,6 +16,7 @@ router.post('/', function(req, res){
 				})
 			}
 			else{
+				// TODO: Handle this
 				console.log('no friend, handle this');
 			}
 		})
@@ -30,22 +31,21 @@ router.get('/friends', function(req, res){
 	if(session.token){
 		User.findOne({ 'hash' : session.token }, function (err, user){
 			if(err){
+				// TODO: ERROR HANDLING
 				console.log(err);
 				// I really need error handling
 			}
 			var friendIDs = user.friends;
 			var friendNames = [];
 			User.find({'_id' : { $in: friendIDs }}, function (err, friends){
-				//console.log(friends);
 				for(var i = 0; i < friends.length; i++){
-					friendNames.push(friends[i].email)
+					friendNames.push(friends[i].email);
 				}
 				console.log(friendNames)
 				res.send({
 					'names' : friendNames
 				});
 			})
-			//console.log(friendNames);
 		})
 	}
 	else{
