@@ -81,7 +81,34 @@ var checkTimes = function (u1StartTime, u1EndTime, u2StartTime, u2EndTime){
 		}
 	}
 	if(u2StartHour == u1StartHour && u2EndHour == u1EndHour){
-
+		return {
+			start: constructStartTime(u1StartMinute, u2StartMinute, u1StartHour),
+			end: constructEndTime(u1EndMinute, u2EndMinute, u1EndHour)
+		}
+	}
+	if(u2StartHour == u1StartHour && u2EndHour > u1EndHour){
+		return{
+			start: constructStartTime(u1StartMinute, u2StartMinute, u1StartHour),
+			end: u1EndTime
+		}
+	}
+	if(u2StartHour < u1StartHour && u2EndHour > u1EndHour){
+		return{
+			start: u1StartTime,
+			end: u1EndHour
+		}
+	}
+	if(u2StartHour < u1StartHour && u2EndHour == u1EndHour){
+		return{
+			start: u1StartTime,
+			end: constructEndTime(u1EndMinute, u2EndMinute, u1EndHour)
+		}
+	}
+	if(u2StartHour < u1StartHour && u2EndHour < u1EndHour){
+		return{
+			start: u1StartTime,
+			end: u2EndTime
+		}
 	}
 }
 
