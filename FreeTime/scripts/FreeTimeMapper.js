@@ -27,6 +27,7 @@ exports.checkUserFreetimes = function (user1Times, user2Times){
 	}
 }
 
+// TODO: Refactor into subfunctions.
 var checkTimes = function (u1StartTime, u1EndTime, u2StartTime, u2EndTime){
 	var u1StartSplit = u1StartTime.split(':');
 	var u1StartHour = parseInt(u1StartSplit[0]);
@@ -57,15 +58,8 @@ var checkTimes = function (u1StartTime, u1EndTime, u2StartTime, u2EndTime){
 		}
 	}
 	if(u2StartHour > u1StartHour && u2EndHour == u1EndHour){
-		var minute;
-		if(u2EndMinute < u1EndMinute){
-			minute = u2EndMinute;
-		} else{
-			minute = u1EndMinute;
-		}
-
-		var paddedMinute = pad(minute, 2);
-		var paddedHour = pad(u2StartHour, 2);
+		var paddedMinute = checkAndPadEndMinutes(u1EndMinute, u2EndMinute);
+		var paddedHour = pad(u1EndHour, 2);
 
 		var endTime = paddedHour + ":" + paddedMinute + ":00.000Z";
 
@@ -73,8 +67,56 @@ var checkTimes = function (u1StartTime, u1EndTime, u2StartTime, u2EndTime){
 			start: u2StartTime,
 			end: endTime
 		}
+	}
+	if(u2StartHour > u1StartHour && u2EndHour > u1EndHour){
+		return {
+			start: u2StartTime,
+			end: u1EndTime
+		}
+	}
+	if(u2StartHour == u1StartHour && u2EndHour < u1EndHour){
+		return {
+			start: constructStartTime(u1StartMinute, u2StartMinute, u1StartHour),
+			end: u2EndTime
+		}
+	}
+	if(u2StartHour == u1StartHour && u2EndHour == u1EndHour){
 
 	}
+}
+
+function constructEndTime(u1EndMinute, u2EndMinute, endHour){
+	var paddedMinute = checkAndPadEndMinutes(u1EndMinute, u2EndMinute);
+	var paddedHour = pad(u1StartHour, 2);
+	return paddedHour + ":" + paddedMinute + ":00.000Z";
+}
+
+function constructStartTime(u1StartMinute, u2StartMinute, startHour){
+	var paddedMinute = checkAndPadStartMinutes(u1StartMinute, u2StartMinute);
+	var paddedHour = pad(u1StartHour, 2);
+	return paddedHour + ":" + paddedMinute + ":00.000Z";
+}
+
+function checkAndPadEndMinutes(u1EndMinute, u2EndMinute){
+	var minute;
+	if(u2EndMinute < u1EndMinute){
+		minute = u2EndMinute;
+	} else{
+		minute = u1EndMinute;
+	}
+
+	return pad(minute, 2);
+}
+
+function checkAndPadStartMinutes(u1StartMinute, u2StartMinute){
+	var minute;
+	if(u2StartMinute > u1StartMinute){
+		minute = u2StartMinute;
+	} else{
+		minute = u1EndMinute;
+	}
+
+	return pad(minute, 2);
 }
 
 // http://stackoverflow.com/questions/6466135/adding-extra-zeros-in-front-of-a-number-using-jquery
