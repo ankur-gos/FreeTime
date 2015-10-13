@@ -22,7 +22,10 @@ exports.checkUserFreetimes = function (user1Times, user2Times){
 			var u2StartTime = ISOFormatter.getTimeFromISODate(user2Times[j].startTime.toISOString());
 			var u2EndTime = ISOFormatter.getTimeFromISODate(user2Times[j].endTime.toISOString());
 
-			
+			var returnedTime = checkTimes(u1StartTime, u1EndTime, u2StartTime, u2EndTime);
+			if(returnedTime !== undefined){
+
+			}
 		}
 	}
 }
