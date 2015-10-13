@@ -80,9 +80,11 @@ router.get('/times', function(req, res, next){
 				}
 
 				for(var i = 0; i < startTimes.length; i++){
+					console.log(ISOFormatter.getTimeFromISODate(startTimes[i]));
+					console.log(ISOFormatter.getDateFromISODate(startTimes[i]));
 					timesObject.times.push({
-						'start' : startTimes[i],
-						'end' : endTimes[i]
+						'start' : ISOFormatter.convertISOToDateString(startTimes[i]),
+						'end' : ISOFormatter.convertISOToDateString(endTimes[i])
 					});
 				}
 				res.send(timesObject)
@@ -93,23 +95,6 @@ router.get('/times', function(req, res, next){
 		console.log('no session token');
 	}
 });
-
-//should use map()
-
-var createTimeArray = function ( ISOTimes ) {
-	var times = [];
-	//console.log(ISOTimes.length)
-	for (time in ISOTimes) {
-		times.push(extractTimeFromISO(ISOTimes[time]))
-	}
-	//console.log(times.length)
-	return times
-}
-
-var extractTimeFromISO = function( ISO ) {
-	var date = new Date(ISO);
-	return date.toTimeString();
-}
 
 
 module.exports = router;

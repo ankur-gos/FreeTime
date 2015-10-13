@@ -11,7 +11,6 @@ var db = require('./scripts/db')
 
 // routes
 var home = require('./routes/HomeRoute');
-var users = require('./routes/users');
 var signup = require('./routes/SignUpRoute');
 var login = require('./routes/LoginRoute');
 var freetime = require('./routes/FreeTimeRoute');
@@ -41,7 +40,6 @@ app.use(session({
 }))
 
 app.use('/', home);
-app.use('/users', users);
 app.use('/signup', signup);
 app.use('/login', login);
 app.use('/feed', freetime);
