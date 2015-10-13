@@ -4,11 +4,13 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var ObjectId = Schema.ObjectId;
+var SubFriend = require('./SubFriend');
+
 
 var freeTimeSchema = new Schema({
 	startTime: Date,
 	endTime: Date,
-	friends: [ ObjectId ]
+	friends: [ SubFriend.Schema ]
 })
 
 module.exports = mongoose.model('FreeTime', freeTimeSchema);

@@ -15,14 +15,14 @@ exports.checkUserFreetimes = function (user1Times, user2Times){
 		for (var j = 0; j < user2Times.length; j++){
 			var u2Date = ISOFormatter.getDateFromISODate(userTimes[j].startTime.toISOString());
 			if(u1Date != u2Date){
-				console.log("Time not matched");
+				console.log("Date not matched");
 				break;
 			}
 
 			var u2StartTime = ISOFormatter.getTimeFromISODate(user2Times[j].startTime.toISOString());
 			var u2EndTime = ISOFormatter.getTimeFromISODate(user2Times[j].endTime.toISOString());
 
-
+			
 		}
 	}
 }
