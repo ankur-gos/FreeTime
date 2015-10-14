@@ -3,7 +3,7 @@ var router = express.Router();
 var mongoose = require('mongoose');
 var User = mongoose.model('User');
 var ISOFormatter = require('../scripts/ISOFormatter');
-
+var Mapper = require('../scripts/ISOFormatter');
 
 
 
@@ -23,6 +23,8 @@ router.post('/', function(req, res){
 		console.log(start);
 		console.log(end);
 		User.findOne({ 'hash' : session.token }, function(err, user){
+			// TODO: Handle err
+
 			var startISO = ISOFormatter.getISODateFromDateAndTime(date, start);
 			var endISO = ISOFormatter.getISODateFromDateAndTime(date, end);
 			var startDate = new Date(startISO);
@@ -37,10 +39,17 @@ router.post('/', function(req, res){
 					res.send(err);
 				}
 				else {
-					console.log(user.freetimes[0]);
-					res.send(user.freetimes[0]);
+					res.send('ok');
 				}
 			})
+
+			var userFriends = user.friends;
+			for(var i = 0; i < userFriends.length; i++){
+				User.findById(userFriends[i], function (err, friend){
+					var returnedThingie = Mapper.checkUserFreetimes(user.freetimes, friend.freetimes);
+					
+				})
+			}
 			// user.freetimes.push({
 			// 	date: 
 			// });

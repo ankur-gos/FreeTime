@@ -7,24 +7,32 @@ var mongoose = require('mogngoose');
 var Schema = mongoose.Schema;
 var User = mongoose.model('User');
 
-exports.checkUserFreetimes = function (user1Times, user2Times){
-	for (var i = 0; i < user1Times.length; i++){
-		var u1Date = ISOFormatter.getDateFromISODate(user1Times[i].startTime.toISOString());
-		var u1StartTime = ISOFormatter.getTimeFromISODate(user1Times[i].startTime.toISOString());
-		var u1EndTime = ISOFormatter.getTimeFromISODate(user1Times[i].endTime.toISOString());
-		for (var j = 0; j < user2Times.length; j++){
-			var u2Date = ISOFormatter.getDateFromISODate(userTimes[j].startTime.toISOString());
+exports.checkUserFreetimes = function (user1, user2){
+	for (var i = 0; i < user1.freetimes.length; i++){
+		var u1Date = ISOFormatter.getDateFromISODate(user1.freetimes[i].startTime.toISOString());
+		var u1StartTime = ISOFormatter.getTimeFromISODate(user1.freetimes[i].startTime.toISOString());
+		var u1EndTime = ISOFormatter.getTimeFromISODate(user1.freetimes[i].endTime.toISOString());
+		for (var j = 0; j < user2.freetimes.length; j++){
+			var u2Date = ISOFormatter.getDateFromISODate(user2.freetimes[j].startTime.toISOString());
 			if(u1Date != u2Date){
 				console.log("Date not matched");
 				break;
 			}
 
-			var u2StartTime = ISOFormatter.getTimeFromISODate(user2Times[j].startTime.toISOString());
-			var u2EndTime = ISOFormatter.getTimeFromISODate(user2Times[j].endTime.toISOString());
+			var u2StartTime = ISOFormatter.getTimeFromISODate(user2.freetimes[j].startTime.toISOString());
+			var u2EndTime = ISOFormatter.getTimeFromISODate(user2.freetimes[j].endTime.toISOString());
 
 			var returnedTime = checkTimes(u1StartTime, u1EndTime, u2StartTime, u2EndTime);
 			if(returnedTime !== undefined){
-
+				user1.freetimes[i].friends.push({
+					friend: user2._id,
+					start: returnedTime.start,
+					end: returnedTime.end
+				})
+				user1.save(function (err){
+					if(err) throw err;
+					console.log("free time added");
+				})
 			}
 		}
 	}

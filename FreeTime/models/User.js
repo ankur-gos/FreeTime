@@ -11,7 +11,7 @@ var userSchema = new Schema({
 	email: String,
 	hash: String,
 	verified: Boolean,
-	freetimes: [FreeTime.schema],
+	freetimes: [ FreeTime.schema ],
 	friends: [ ObjectId ]
 })
 
