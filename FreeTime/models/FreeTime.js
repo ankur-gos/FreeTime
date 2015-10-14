@@ -10,7 +10,7 @@ var SubFriend = require('./SubFriend');
 var freeTimeSchema = new Schema({
 	startTime: Date,
 	endTime: Date,
-	friends: [ SubFriend.Schema ]
+	friends: [ SubFriend.schema ]
 })
 
 module.exports = mongoose.model('FreeTime', freeTimeSchema);
