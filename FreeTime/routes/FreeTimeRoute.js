@@ -3,7 +3,7 @@ var router = express.Router();
 var mongoose = require('mongoose');
 var User = mongoose.model('User');
 var ISOFormatter = require('../scripts/ISOFormatter');
-var Mapper = require('../scripts/ISOFormatter');
+var Mapper = require('../scripts/FreeTimeMapper');
 
 
 
@@ -46,8 +46,7 @@ router.post('/', function(req, res){
 			var userFriends = user.friends;
 			for(var i = 0; i < userFriends.length; i++){
 				User.findById(userFriends[i], function (err, friend){
-					var returnedThingie = Mapper.checkUserFreetimes(user.freetimes, friend.freetimes);
-					
+					Mapper.checkUserFreetimes(user, friend);
 				})
 			}
 			// user.freetimes.push({

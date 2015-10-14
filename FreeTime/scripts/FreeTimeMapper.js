@@ -3,7 +3,7 @@
 // FreeTimeMapper.js
 
 var ISOFormatter = require('./ISOFormatter');
-var mongoose = require('mogngoose');
+var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var User = mongoose.model('User');
 

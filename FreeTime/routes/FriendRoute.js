@@ -13,6 +13,7 @@ router.post('/', function(req, res){
 			if(friend){
 				User.update({ 'hash': session.token }, { $push : { 'friends' : friend._id }}, function(err, response){
 					console.log(response);
+					console.log("PING")
 				})
 			}
 			else{
