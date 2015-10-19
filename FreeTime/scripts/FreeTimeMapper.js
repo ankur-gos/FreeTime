@@ -151,7 +151,7 @@ function checkAndPadStartMinutes(u1StartMinute, u2StartMinute){
 	if(u2StartMinute > u1StartMinute){
 		minute = u2StartMinute;
 	} else{
-		minute = u1EndMinute;
+		minute = u1StartMinute;
 	}
 
 	return pad(minute, 2);
