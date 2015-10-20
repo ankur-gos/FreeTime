@@ -10,13 +10,13 @@ router.get('/', function(req, res, next) {
 		res.redirect('/feed')
 	}
 	else{
-		res.render('Partials/Home', {});
+		res.render('Home', {});
 	}
 });
 
 // Input
 router.get('/feed', function(req, res){
-	res.render('Partials/Feed', {});
+	res.render('Feed', {});
 });
 
 router.get('/logout', function(req, res){

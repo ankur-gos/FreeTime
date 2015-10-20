@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-var login = require('../models/LoginUser')
+var login = require('../scripts/LoginUser')
 
 router.post('/', function (req, res, next){
   if(req.body.login){

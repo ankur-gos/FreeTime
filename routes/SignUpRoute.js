@@ -3,9 +3,9 @@ var router = express.Router();
 var db = require('monk')('localhost/freetime');
 var users = db.get('users');
 
-var InsertUsers = require('../models/InsertUsers')
-var URLCreator = require('../models/EmailURLCreator')
-var EmailSender = require('../models/EmailSender')
+var InsertUsers = require('../scripts/InsertUsers')
+var URLCreator = require('../scripts/EmailURLCreator')
+var EmailSender = require('../scripts/EmailSender')
 
 
 //use request when user clicks link in email

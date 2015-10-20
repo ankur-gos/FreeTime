@@ -17,8 +17,8 @@ var freetime = require('./routes/FreeTimeRoute');
 var friends = require('./routes/FriendRoute');
 
 // classes
-var InsertUser = require('./models/InsertUsers');
-var Error = require('./models/Error');
+var InsertUser = require('./scripts/InsertUsers');
+var Error = require('./scripts/Error');
 
 var app = express();
 // view engine setup
