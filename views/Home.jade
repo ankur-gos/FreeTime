@@ -25,6 +25,9 @@ html(lang='en')
     meta(name='description', content='')
     meta(name='author', content='')
     title Welcome to freetime!
+    // Angular, TODO: Manually compile?
+    script(data-require='angular.js@1.2.19', data-semver='1.2.19', src='https://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js')
+    script(src='javascripts/app.js')
     // Bootstrap Core CSS
     link(href='stylesheets/bootstrap.min.css', rel='stylesheet')
     // Custom CSS
@@ -38,7 +41,7 @@ html(lang='en')
     //if lt IE 9
       script(src='https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js')
       script(src='https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js')
-  body#page-top(data-spy='scroll', data-target='.navbar-fixed-top')
+  body#page-top(data-spy='scroll', data-target='.navbar-fixed-top', ng-app='myApp', ng-controller='HomeController')
     // Navigation
     nav.navbar.navbar-custom.navbar-fixed-top(role='navigation')
       .container
@@ -70,9 +73,15 @@ html(lang='en')
               p.intro-text Schedule parties and events around your friends' schedules
               form.form-horizontal
                 .col-md-10.col-xs-8
-                    input(type="text" placeholder="Email").form-control
+                    input(type="text", placeholder="Email", ng-model='signup').form-control
                 .col-md-2.col-xs-2
-                    button(type="submit").btn.btn-signup Sign up
+                    button(type="submit", ng-click="postEmail(signup)").btn.btn-signup Sign up
+              div(style="height=70px;").col-xs-12
+              form.form-horizontal
+                .col-md-10.col-xs-8
+                    input(type="text", placeholder="Email", ng-model='login').form-control
+                .col-md-2.col-xs-2
+                    button(type="submit", ng-click="postLogin(login)").btn.btn-signup Login
             .col-md-8.col-md-offset-2
               a.btn.btn-circle.page-scroll(href='#about')
                 i.fa.fa-angle-double-down.animated
