@@ -304,6 +304,19 @@ a:focus {
     transition: all .3s ease-in-out;
 }
 
+.btn-signup {
+    border: 1px solid #000000;
+    color: #ffffff;
+    background-color: #000000; 
+}
+
+.btn-signup:hover,
+.btn-signup:focus {
+    border: 1px solid #000000;
+    color: #42dca3;
+    background-color: #000000; 
+}
+
 .btn-default {
     border: 1px solid #42dca3;
     color: #42dca3;
