@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+          <meta charset="UTF-8" />
+          <title>FreeTime</title>
+
+</head>
+<body>
+  <div id="example"></div>
+    <script type="text/babel">
+        // tutorial1.js
+        var CommentBox = React.createClass({
+            render: function() {
+                return (
+                        <div className="commentBox">
+                            Hello, world! I am a CommentBox.
+                        </div>
+                );
+            }
+        });
+        ReactDOM.render(
+                <CommentBox />,
+                document.getElementById('example')
+        );
+
+    </script>
+    <script src="https://unpkg.com/react@15.3.2/dist/react.js"></script>
+    <script src="https://unpkg.com/react-dom@15.3.2/dist/react-dom.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+</body>
+</html>
+
