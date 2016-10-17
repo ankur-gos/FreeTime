@@ -1,32 +1,120 @@
 <!DOCTYPE html>
 <html>
     <head>
-          <meta charset="UTF-8" />
-          <title>FreeTime</title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>FreeTime</title>
+        <script src="https://unpkg.com/react@15.3.2/dist/react.js"></script>
+        <script src="https://unpkg.com/react-dom@15.3.2/dist/react-dom.js"></script>
+        <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+        <link rel='stylesheet' href='../fullcalendar-3.0.1/fullcalendar.css' />
+        <script src='../fullcalendar-3.0.1/lib/jquery.min.js'></script>
+        <script src='../fullcalendar-3.0.1/lib/moment.min.js'></script>
+        <script src='../fullcalendar-3.0.1/fullcalendar.js'></script>
 
-</head>
+
+    </head>
 <body>
-  <div id="example"></div>
+  <div id="title"></div>
+
+  <div id="calendar"></div>
+  <div id="chat"></div>
+  <style>
+      /*div {*/
+          /*height: 100%;*/
+          /*width: 100%;*/
+      /*}*/
+      table{
+          border-collapse: collapse;
+      }
+      td, th{
+          border: 1px solid #999;
+          padding: 0.5rem;
+
+      }
+      th{
+          text-align: center;
+      }
+      td {
+          text-align: left;
+      }
+      #calendar {
+          display: inline-block;
+          vertical-align: top;
+          margin-right: 10px;
+          width: 80%
+      }
+      #chat{
+          display: inline-block;
+          width:15%;
+          height: 90vh;
+          border: 1px solid #999;
+          padding: 0.5rem;
+      }
+      #messageInput{
+          display: inline-block;
+          position: absolute;
+          bottom: 0px;
+          width: 60%;
+          height: 3vh;
+          border: 1px solid #999;
+          margin: 5px auto auto 5px;
+      }
+      #sendMessageButton{
+          display: inline-block;
+          width: 25%;
+          height: 3vh;
+          text-align: center;
+      }
+      
+      .SendBlock{
+          width: 100%;
+          height: 100vh;
+          position: relative;
+      }
+
+  </style>
     <script type="text/babel">
-        // tutorial1.js
         var CommentBox = React.createClass({
             render: function() {
                 return (
-                        <div className="commentBox">
-                            Hello, world! I am a CommentBox.
+                        <div className="Title">
+                            FreeTime
                         </div>
                 );
             }
         });
-        ReactDOM.render(
-                <CommentBox />,
-                document.getElementById('example')
-        );
+
+        var ChatWindow = React.createClass({
+            render: function(){
+                return(
+                        <div className="Chat">
+                            Group Chat
+                            <div className="SendBlock">
+                                <input id="messageInput" type="text" name="Message" />
+                                <button type="button" id="sendMessageButton">Send</button>
+                            </div>
+                        </div>
+                );
+            }
+        });
+
+        $(document).ready(function(){
+            ReactDOM.render(
+                    <CommentBox />,
+                    document.getElementById('title')
+            );
+            ReactDOM.render(
+                    <ChatWindow/>,
+                    document.getElementById('chat')
+            )
+            $('#calendar').fullCalendar({
+                aspectRatio: 2
+            });
+        });
 
     </script>
-    <script src="https://unpkg.com/react@15.3.2/dist/react.js"></script>
-    <script src="https://unpkg.com/react-dom@15.3.2/dist/react-dom.js"></script>
-    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+
 </body>
 </html>
 
