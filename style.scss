@@ -1,0 +1,36 @@
+@import 'jeet/index';
+
+@include edit();
+
+#calendar {
+  display: inline-block;
+  vertical-align: top;
+  margin-right: 10px;
+  width: 80%
+}
+#chat{
+  display: inline-block;
+  width:15%;
+  height: 90vh;
+  border: 1px solid #999;
+  padding: 0.5rem;
+}
+#messageInput{
+  display: inline-block;
+  position: absolute;
+  bottom: 0px;
+  width: 60%;
+  height: 3vh;
+  border: 1px solid #999;
+  margin: 5px auto auto 5px;
+}
+#sendMessageButton{
+  display: inline-block;
+  width: 25%;
+  height: 3vh;
+  text-align: center;
+}
+
+.SendBlock{
+  position: relative;
+}
